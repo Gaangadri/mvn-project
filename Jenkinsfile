@@ -23,7 +23,7 @@ pipeline {
         stage('Docker Deploy') {
             steps {
                 sshagent(['docker-host']) {
-                    sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.85.80 docker run -d -p 8080:8080 --name mvn-project medavamsi/mvn-project:0.0.2
+                    sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.85.80 docker run -d -p 8080:8080 --name mvn-project medavamsi/mvn-project:0.0.2"
         }
     }
 }

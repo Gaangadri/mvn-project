@@ -14,8 +14,10 @@ pipeline {
         }
         stage ('Docker push') {
             steps {
-                sh "docker login -u medavamsi -p xxxxxx"
-                sh "docker push medavamsi/mvn-project:0.0.2"
+                withCredentials([string(credentialsId: 'docker-hub', variable: 'hubpwd')]) {
+                    sh "docker login -u medavamsi -p ${hubpwd}"
+                    sh "docker push medavamsi/mvn-project:0.0.2"
+             }
          }
        }
     }

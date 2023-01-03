@@ -3,27 +3,19 @@ pipeline {
 
     stages {
         stage('maven-build') {
-            when {
-                branch "developer"
-            }
             steps {
                 sh "mvn clean package"
             }
         }
-        stage('Tomcat-deploy-dev') {
-            when {
-                branch "developer"
-            }
+        stage('Docker Build') {
             steps {
-               echo "deploying to developer"
+              sh "docker build -t medavamsi/mvn-project:0.0.2 ."
             }
         }
-        stage ('any name') {
-            when {
-                branch "main"
-            }
+        stage ('Docker push') {
             steps {
-                echo "deploying to main"
+                sh "docker login -u medavamsi -p xxxxxx"
+                sh "docker push medavamsi/mvn-project:0.0.2"
          }
        }
     }

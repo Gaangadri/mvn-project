@@ -1,5 +1,5 @@
 <html>
 <body>
-<h2 style = "color:pink">Hello World!</h2>
+<h2 style = "color:skyblue">Hello World!</h2>
 </body>
 </html>
